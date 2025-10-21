@@ -6,9 +6,11 @@ LazyFranchisor is a cutting-edge, multi-platform franchising management system d
 
 Our vision is to empower franchisors and franchisees with an intuitive, integrated, and efficient system that simplifies daily operations, improves data visibility, and fosters seamless collaboration across the entire network.
 
-## Key Features (MVP)
+## Key Features (Current & Planned)
 
-The initial release of LazyFranchisor focuses on the following essential modules:
+LazyFranchisor is being developed with a modular approach, encompassing a wide range of functionalities critical for modern franchising.
+
+### Current MVP Features:
 
 *   **Accounting:**
     *   Centralized tracking of sales and revenue across the franchise network.
@@ -22,6 +24,18 @@ The initial release of LazyFranchisor focuses on the following essential modules
     *   Real-time integration with inventory levels for accurate stock management.
 *   **Geo-location Support:**
     *   Foundation for managing franchisee locations geographically, enabling future features like delivery tracking and location-based services.
+
+### Planned Expanded Features:
+
+*   **Expanded Accounting:** Automated royalty invoicing, expense management, advanced financial reporting, budgeting, and external accounting integrations.
+*   **Auditing:** Customizable checklists, scheduled inspections, photo/video evidence, corrective action tracking, compliance dashboards, and food safety management.
+*   **Standard Operating Procedures (SOP):** Centralized SOP library, creation/version control, task assignment, training integration, and compliance monitoring.
+*   **Supply Chain Management (SCM):** Centralized purchasing, vendor management, automated reordering, inter-store transfer optimization, and supply-to-demand synchronization.
+*   **Enterprise Resource Planning (ERP):** Comprehensive multi-location management, granular user access control, contract management, and asset management.
+*   **Customer Relationship Management (CRM):** Franchisee lead management, customer contact management, email marketing integration, marketing/sales automation, and customer support ticketing.
+*   **Expanded POS:** Order management (dine-in, takeout, delivery), table management, employee management (clock-in/out), gift card/loyalty programs, and offline mode.
+*   **Expanded Warehouse Management:** Detailed inventory tracking (batch, expiry), receiving/putaway processes, cycle counting, and supplier integration.
+*   **Central Kitchen Management:** Production planning/scheduling, recipe/ingredient management, centralized raw material inventory, batch production optimization, wastage tracking, and distribution/logistics integration.
 
 ## Technology Stack
 
@@ -118,6 +132,10 @@ Comprehensive documentation for LazyFranchisor is available in the `docs/` direc
 *   **Development Guidelines:** `docs/Development_Guidelines.md`
 *   **Software Features with Technical Data:** `docs/Software_Features_Technical_Data.md`
 *   **System Overview & User Guide:** `docs/Professional_Documentation_User_Guide.md`
+
+## Roadmap
+
+LazyFranchisor is envisioned as a comprehensive solution for franchising management. Following the successful implementation of the MVP, future development will focus on progressively integrating the planned expanded features across Accounting, Auditing, SOP, SCM, ERP, CRM, and Central Kitchen Management, evolving into a full-fledged, integrated platform.
 
 ## Contributing
 

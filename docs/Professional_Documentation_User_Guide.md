@@ -10,11 +10,22 @@
     *   **Improved Data Visibility:** Gain real-time insights into business performance.
     *   **Enhanced Collaboration:** Facilitate seamless communication and data sharing between franchisors and franchisees.
     *   **Scalability:** A robust foundation ready for future expansion and new features.
-*   **1.3 Key Modules (MVP Focus):**
-    The initial release (MVP) of LazyFranchisor includes the following core modules:
+*   **1.3 Key Modules (Current & Planned):**
+    LazyFranchisor is being developed with a modular approach. The initial release (MVP) includes:
     *   **Accounting:** Track sales and revenue, generate basic reports.
     *   **Warehouse Management:** Manage inventory, order fulfillment, and stock transfers.
     *   **Point of Sale (POS):** Process sales, apply discounts, and integrate with inventory.
+
+    Future planned modules include:
+    *   **Expanded Accounting:** Advanced financial reporting, royalty management, expense tracking.
+    *   **Auditing:** Compliance checks, inspection scheduling, corrective action tracking.
+    *   **Standard Operating Procedures (SOP)::** Centralized SOP library, task management, training integration.
+    *   **Supply Chain Management (SCM):** Centralized purchasing, vendor management, automated reordering.
+    *   **Enterprise Resource Planning (ERP):** Multi-location management, contract & asset management, granular access control.
+    *   **Customer Relationship Management (CRM):** Lead management, customer data, marketing automation, support ticketing.
+    *   **Expanded POS:** Order management (dine-in, takeout, delivery), employee management, loyalty programs.
+    *   **Expanded Warehouse Management:** Detailed inventory tracking, receiving, cycle counting.
+    *   **Central Kitchen Management:** Production planning, recipe management, raw material inventory, wastage tracking.
 
 **2. Getting Started**
 
@@ -42,14 +53,14 @@
 LazyFranchisor implements Role-Based Access Control (RBAC) to ensure users only have access to functionalities relevant to their responsibilities.
 
 *   **3.1 Franchisor Admin:**
-    *   **Responsibilities:** Overall system configuration, user management, network-wide reporting, promotion management.
-    *   **Key Capabilities:** View aggregated sales data, manage franchisee accounts, define global promotions.
+    *   **Responsibilities:** Overall system configuration, user management, network-wide reporting, promotion management, audit management, SOP creation, centralized purchasing, ERP oversight, CRM management.
+    *   **Key Capabilities:** View aggregated sales data, manage franchisee accounts, define global promotions, create audit checklists, manage SOPs, oversee vendor relationships.
 *   **3.2 Franchisee Owner:**
     *   **Responsibilities:** Manage their specific franchise location's operations, staff, and inventory.
-    *   **Key Capabilities:** Record sales, manage inventory, initiate/receive stock transfers, generate local reports, manage local discounts.
+    *   **Key Capabilities:** Record sales, manage inventory, initiate/receive stock transfers, generate local reports, manage local discounts, access SOPs, manage local customer data.
 *   **3.3 Employee (e.g., Cashier, Warehouse Staff):**
     *   **Responsibilities:** Execute daily operational tasks specific to their role.
-    *   **Key Capabilities:** Process POS transactions, fulfill stock transfer orders, receive inventory.
+    *   **Key Capabilities:** Process POS transactions, fulfill stock transfer orders, receive inventory, access relevant SOPs.
 
 **4. Module Guides**
 
@@ -103,11 +114,51 @@ LazyFranchisor implements Role-Based Access Control (RBAC) to ensure users only 
         *   Each successful sale automatically deducts the sold items from your current inventory levels.
         *   This ensures real-time stock accuracy and helps prevent overselling.
 
-**5. Settings & Configuration**
+**5. Module Guides (Planned Expanded Features - High-Level Overview)**
+
+*   **5.1 Expanded Accounting:**
+    *   **Royalty Management:** Automate the calculation and invoicing of franchisee royalties.
+    *   **Expense Tracking:** Tools for franchisees to record and manage their operational expenses.
+    *   **Advanced Reporting:** Generate detailed financial statements (P&L, Balance Sheet) and customizable reports.
+    *   **Budgeting:** Set and track budgets for individual franchises and the network.
+*   **5.2 Auditing Module:**
+    *   **Audit Scheduling & Execution:** Plan and conduct various types of audits (operational, quality, food safety) using digital checklists.
+    *   **Compliance Tracking:** Monitor franchisee adherence to brand standards and regulatory requirements.
+    *   **Corrective Action Management:** Track and ensure resolution of audit findings.
+*   **5.3 SOP (Standard Operating Procedures) Module:**
+    *   **SOP Library:** Access a centralized repository of all official SOPs and operational manuals.
+    *   **Task Management:** Assign and track tasks related to SOP compliance and training.
+*   **5.4 SCM (Supply Chain Management) Module:**
+    *   **Centralized Purchasing:** Place orders with approved vendors, leveraging bulk purchasing power.
+    *   **Vendor Management:** Manage vendor information, contracts, and performance.
+    *   **Automated Reordering:** System-generated suggestions for inventory replenishment.
+*   **5.5 ERP (Enterprise Resource Planning) Module:**
+    *   **Multi-Location Management:** Centralized control and configuration for all franchise locations.
+    *   **User & Access Management:** Granular control over user roles and permissions.
+    *   **Contract & Asset Management:** Digital management of franchise agreements and physical assets.
+*   **5.6 CRM (Customer Relationship Management) Module:**
+    *   **Franchisee Lead Management:** Track and nurture potential franchisee candidates.
+    *   **Customer Data Management:** For franchisees to manage their local customer information and interactions.
+    *   **Marketing Automation:** Tools for targeted marketing campaigns.
+    *   **Support Ticketing:** System for managing customer support inquiries.
+*   **5.7 Expanded POS Features:**
+    *   **Order Management:** Handle various order types (dine-in, takeout, delivery) and track their status.
+    *   **Employee Management:** Clock-in/out functionality and role-based access within the POS.
+    *   **Loyalty Programs:** Manage customer loyalty points and rewards.
+*   **5.8 Expanded Warehouse Management:**
+    *   **Detailed Inventory Tracking:** Manage inventory by batch, expiry date, and specific storage locations.
+    *   **Receiving & Putaway:** Streamlined processes for inbound inventory.
+    *   **Cycle Counting:** Tools to perform regular physical inventory checks.
+*   **5.9 Central Kitchen Management:**
+    *   **Production Planning:** Schedule and manage food production based on demand.
+    *   **Recipe & Ingredient Management:** Centralized database for recipes and raw material tracking.
+    *   **Wastage Tracking:** Monitor and minimize production waste.
+
+**6. Settings & Configuration**
 
 *   [This section will detail any user-configurable settings, e.g., profile management, notification preferences, printer settings for POS, etc. Specifics will depend on UI/UX design.]
 
-**6. Troubleshooting & FAQs**
+**7. Troubleshooting & FAQs**
 
 *   **Q: I can't log in. What should I do?**
     *   A: Double-check your email and password. If you've forgotten your password, use the "Forgot Password" link. If issues persist, contact your Franchisor Admin.
@@ -115,13 +166,13 @@ LazyFranchisor implements Role-Based Access Control (RBAC) to ensure users only 
     *   A: Ensure all sales transactions were completed successfully and all stock transfers were marked as "Received." If the discrepancy continues, contact support.
 *   [Add more FAQs as common issues arise during development and testing.]
 
-**7. Support & Contact Information**
+**8. Support & Contact Information**
 
 *   For technical support, please contact: [Support Email Address / Phone Number]
 *   For general inquiries, please contact: [General Inquiry Email Address / Phone Number]
 *   Support Hours: [e.g., Monday - Friday, 9:00 AM - 5:00 PM EST]
 
-**8. Glossary of Terms**
+**9. Glossary of Terms**
 
 *   **Franchisor:** The entity that grants the right to operate a franchise.
 *   **Franchisee:** An individual or company that operates a franchise under a license from a franchisor.
@@ -129,3 +180,7 @@ LazyFranchisor implements Role-Based Access Control (RBAC) to ensure users only 
 *   **POS (Point of Sale):** The place where a customer makes a payment to the merchant in exchange for goods or services.
 *   **Stock Transfer:** The movement of inventory from one location to another within the franchise network.
 *   **JWT (JSON Web Token):** A compact, URL-safe means of representing claims to be transferred between two parties.
+*   **SOP (Standard Operating Procedure):** A set of step-by-step instructions compiled by an organization to help workers carry out routine operations.
+*   **SCM (Supply Chain Management):** The management of the flow of goods and services, involves the movement and storage of raw materials, work-in-process inventory, and finished goods from point of origin to point of consumption.
+*   **ERP (Enterprise Resource Planning):** A system that integrates all facets of an operation, including product planning, development, manufacturing, sales and marketing.
+*   **CRM (Customer Relationship Management):** A technology for managing all your company’s relationships and interactions with customers and potential customers.

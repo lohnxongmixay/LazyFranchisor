@@ -7,7 +7,7 @@
     *   **Clean Code:** Write code that is easy to read, understand, and modify.
     *   **Test-Driven Development (TDD):** Prioritize writing tests before or alongside feature development to ensure correctness and prevent regressions.
     *   **Security First:** Implement security best practices at every layer of the application.
-    *   **Modularity:** Design components and services to be loosely coupled and highly cohesive.
+    *   **Modularity:** Design components and services to be loosely coupled and highly cohesive, facilitating the phased expansion into a comprehensive feature set (Accounting, Auditing, SOP, SCM, ERP, CRM, POS, Warehouse Management, Central Kitchen Management).
     *   **Performance:** Optimize for speed and efficiency, especially in critical paths.
     *   **Documentation:** Maintain clear and concise documentation for code, APIs, and processes.
 

@@ -1,8 +1,8 @@
-# Executive Presentation: LazyFranchisor - Multi-Platform Franchising Management System MVP
+# Executive Presentation: LazyFranchisor - Multi-Platform Franchising Management System
 
 ## Slide 1: Title Slide
 *   **Title:** LazyFranchisor: Revolutionizing Franchising Management
-*   **Subtitle:** A Multi-Platform Minimum Viable Product (MVP)
+*   **Subtitle:** A Multi-Platform System for Growth & Efficiency
 *   **Presented to:** [Stakeholders/Management/Investors]
 *   **Date:** October 22, 2025
 
@@ -14,10 +14,10 @@
 
 ## Slide 3: Introducing LazyFranchisor: Our Solution
 *   **Vision:** To empower franchisors and franchisees with an intuitive, integrated, and efficient multi-platform system that streamlines operations and fosters growth.
-*   **LazyFranchisor MVP:** A foundational system focusing on the most critical operational aspects to deliver immediate value and establish a robust platform for future expansion.
-*   **Key Differentiators:** Multi-platform accessibility, modern technology stack, focus on core business processes.
+*   **LazyFranchisor:** A robust platform designed to evolve from a Minimum Viable Product (MVP) into a comprehensive solution, delivering immediate value and establishing a scalable foundation.
+*   **Key Differentiators:** Multi-platform accessibility, modern technology stack, modular design for phased expansion, focus on core business processes.
 
-## Slide 4: Key Features (MVP Focus)
+## Slide 4: Key Features (Current MVP)
 *   **1. Accounting:**
     *   **Sales & Revenue Tracking:** Centralized recording and monitoring of all sales transactions across the franchise network.
     *   **Basic Reporting:** Essential financial insights (e.g., daily/weekly/monthly sales summaries, revenue trends) for both franchisors and individual franchisees.
@@ -45,25 +45,29 @@
     *   **Web Application:** React with TypeScript (for comprehensive management and reporting).
     *   **Mobile Application:** React Native with TypeScript (for on-the-go access and operational tasks).
     *   **Desktop Application:** Electron (packaging the web app for dedicated workstation use).
-*   **Robust Backend (MVP Server):**
+*   **Robust Backend (Microservices):**
     *   **Language/Framework:** Rust with Axum (for high performance, memory safety, and concurrency, ideal for geo-location and data processing).
     *   **Database:** PostgreSQL with PostGIS (for reliable relational data and advanced geographical queries).
     *   **Caching/Messaging:** Redis (for speed and real-time capabilities).
     *   **Containerization:** Docker (ensuring consistent deployment across environments).
 
 ## Slide 7: Roadmap & Future Vision (Beyond MVP)
-*   **Phase 2 & Beyond:**
-    *   Full ERP (Enterprise Resource Planning) integration
-    *   Comprehensive CRM (Customer Relationship Management)
-    *   Advanced SCM (Supply Chain Management)
-    *   Auditing & Compliance modules
-    *   Central Kitchen Management
-    *   Enhanced Delivery & Logistics features (e.g., route optimization, driver management)
-*   **Long-Term Goal:** To become the indispensable operating system for modern franchising, driving efficiency, growth, and innovation.
+*   **Strategic Expansion into Comprehensive Modules:**
+    *   **Expanded Accounting:** Automated royalty invoicing, expense management, advanced reporting, budgeting.
+    *   **Auditing:** Customizable checklists, scheduled inspections, compliance tracking, corrective actions.
+    *   **Standard Operating Procedures (SOP):** Centralized library, version control, task management, training integration.
+    *   **Supply Chain Management (SCM):** Centralized purchasing, vendor management, automated reordering, inter-store transfers.
+    *   **Enterprise Resource Planning (ERP):** Multi-location management, granular access control, contract & asset management.
+    *   **Customer Relationship Management (CRM):** Franchisee lead management, customer contact, marketing/sales automation, support ticketing.
+    *   **Expanded POS:** Order management, table management, employee management, loyalty programs, offline mode.
+    *   **Expanded Warehouse Management:** Detailed inventory tracking, receiving/putaway, cycle counting, supplier integration.
+    *   **Central Kitchen Management:** Production planning, recipe/ingredient management, raw material inventory, wastage tracking.
+*   **Long-Term Goal:** To become the indispensable operating system for modern franchising, driving efficiency, growth, and innovation across the entire network.
 
 ## Slide 8: Call to Action / Next Steps
-*   **Recommendation:** Proceed with the development of the LazyFranchisor MVP based on the outlined features and architecture.
+*   **Recommendation:** Proceed with the development of the LazyFranchisor MVP, laying the groundwork for the comprehensive feature roadmap.
 *   **Next Steps:**
-    *   Detailed technical design and user story refinement.
+    *   Detailed technical design and user story refinement for MVP features.
     *   Commence development of core backend services and frontend components.
     *   Establish CI/CD pipelines.
+    *   Strategic planning for phased implementation of expanded features.
