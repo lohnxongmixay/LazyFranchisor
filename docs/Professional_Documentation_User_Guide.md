@@ -19,7 +19,7 @@
     Future planned modules include:
     *   **Expanded Accounting:** Advanced financial reporting, royalty management, expense tracking.
     *   **Auditing:** Compliance checks, inspection scheduling, corrective action tracking.
-    *   **Standard Operating Procedures (SOP)::** Centralized SOP library, task management, training integration.
+    *   **Standard Operating Procedures (SOP):** Centralized SOP library, task management, training integration.
     *   **Supply Chain Management (SCM):** Centralized purchasing, vendor management, automated reordering.
     *   **Enterprise Resource Planning (ERP):** Multi-location management, contract & asset management, granular access control.
     *   **Customer Relationship Management (CRM):** Lead management, customer data, marketing automation, support ticketing.
@@ -62,7 +62,7 @@ LazyFranchisor implements Role-Based Access Control (RBAC) to ensure users only 
     *   **Responsibilities:** Execute daily operational tasks specific to their role.
     *   **Key Capabilities:** Process POS transactions, fulfill stock transfer orders, receive inventory, access relevant SOPs.
 
-**4. Module Guides**
+**4. Module Guides (Current MVP)**
 
 *   **4.1 Accounting Module:**
     *   **4.1.1 How to View Sales & Revenue:**
