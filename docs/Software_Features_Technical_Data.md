@@ -30,53 +30,55 @@
         *   `Product`: `id`, `name`, `sku`, `price`.
         *   `Franchisee`: `id`, `name`, `location` (PostGIS `GEOMETRY(Point, 4326)`).
     *   **2.3.3 Flow Diagram (Conceptual: Sales Transaction Processing):**
+        This flow diagram illustrates the high-level steps involved when a sales transaction is initiated, from the POS system to inventory updates and persistence in the database.
         ```mermaid
-graph TD
-    A[Franchisee POS] --> B{Record Sale Request};
-    B --> C{Validate Input};
-    C -- Valid --> D[Create SalesTransaction & SalesLineItems];
-    D --> E[Update Inventory (via Warehouse Module)];
-    E --> F[Persist to PostgreSQL];
-    F --> G[Return Success Response];
-    C -- Invalid --> H[Return Error Response];
-    E -- Inventory Update Failed --> I[Rollback Transaction & Return Error];
+        graph TD
+            A[Franchisee POS] --> B{Record Sale Request};
+            B --> C{Validate Input};
+            C -- Valid --> D[Create SalesTransaction & SalesLineItems];
+            D --> E[Update Inventory (via Warehouse Module)];
+            E --> F[Persist to PostgreSQL];
+            F --> G[Return Success Response];
+            C -- Invalid --> H[Return Error Response];
+            E -- Inventory Update Failed --> I[Rollback Transaction & Return Error];
         ```
     *   **2.3.4 UML Diagram (Conceptual: Class Diagram for Accounting Entities):**
+        This class diagram depicts the relationships between key entities within the Accounting module, such as `SalesTransaction`, `SalesLineItem`, `Product`, and `Franchisee`.
         ```mermaid
-classDiagram
-    class SalesTransaction {
-        +UUID id
-        +UUID franchisee_id
-        +UUID employee_id
-        +DateTime timestamp
-        +Decimal total_amount
-        +Decimal discount_applied
-        +String payment_method
-        +String status
-    }
-    class SalesLineItem {
-        +UUID id
-        +UUID sales_transaction_id
-        +UUID product_id
-        +Integer quantity
-        +Decimal unit_price
-        +Decimal subtotal
-    }
-    class Product {
-        +UUID id
-        +String name
-        +String sku
-        +Decimal price
-    }
-    class Franchisee {
-        +UUID id
-        +String name
-        +Point location
-    }
+        classDiagram
+            class SalesTransaction {
+                +UUID id
+                +UUID franchisee_id
+                +UUID employee_id
+                +DateTime timestamp
+                +Decimal total_amount
+                +Decimal discount_applied
+                +String payment_method
+                +String status
+            }
+            class SalesLineItem {
+                +UUID id
+                +UUID sales_transaction_id
+                +UUID product_id
+                +Integer quantity
+                +Decimal unit_price
+                +Decimal subtotal
+            }
+            class Product {
+                +UUID id
+                +String name
+                +String sku
+                +Decimal price
+            }
+            class Franchisee {
+                +UUID id
+                +String name
+                +Point location
+            }
 
-    SalesTransaction "1" -- "*" SalesLineItem : contains
-    SalesLineItem "*" -- "1" Product : refers to
-    SalesTransaction "1" -- "1" Franchisee : belongs to
+            SalesTransaction "1" -- "*" SalesLineItem : contains
+            SalesLineItem "*" -- "1" Product : refers to
+            SalesTransaction "1" -- "1" Franchisee : belongs to
         ```
 
 **3. Core Feature: Warehouse Management**
@@ -101,53 +103,117 @@ classDiagram
         *   `StockTransfer`: `id`, `from_franchisee_id`, `to_franchisee_id`, `initiated_by_user_id`, `timestamp`, `status`.
         *   `StockTransferLineItem`: `id`, `stock_transfer_id`, `product_id`, `quantity`.
     *   **3.3.3 Flow Diagram (Conceptual: Stock Transfer Request & Fulfillment):**
+        This flow diagram outlines the process of requesting and fulfilling a stock transfer, from initiation by a franchisee to the final receipt and inventory update.
         ```mermaid
-graph TD
-    A[Requesting Franchisee] --> B{Initiate Stock Transfer Request};
-    B --> C[Create StockTransfer & StockTransferLineItems];
-    C --> D[Persist to PostgreSQL];
-    D --> E[Notify Fulfilling Location];
-    E --> F{Fulfilling Location Picks & Packs};
-    F --> G{Update StockTransfer Status to 'Shipped'};
-    G --> H[Persist Status Update];
-    H --> I[Notify Requesting Franchisee];
-    I --> J{Requesting Franchisee Receives Stock};
-    J --> K{Update Inventory Levels};
-    K --> L[Persist Inventory Update];
-    L --> M{Update StockTransfer Status to 'Received'};
-    M --> N[Persist Final Status];
+        graph TD
+            A[Requesting Franchisee] --> B{Initiate Stock Transfer Request};
+            B --> C[Create StockTransfer & StockTransferLineItems];
+            C --> D[Persist to PostgreSQL];
+            D --> E[Notify Fulfilling Location];
+            E --> F{Fulfilling Location Picks & Packs};
+            F --> G{Update StockTransfer Status to 'Shipped'};
+            G --> H[Persist Status Update];
+            H --> I[Notify Requesting Franchisee];
+            I --> J{Requesting Franchisee Receives Stock};
+            J --> K{Update Inventory Levels};
+            K --> L[Persist Inventory Update];
+            L --> M{Update StockTransfer Status to 'Received'};
+            M --> N[Persist Final Status];
         ```
     *   **3.3.4 UML Diagram (Conceptual: Class Diagram for Warehouse Entities):**
+        This class diagram illustrates the relationships between `InventoryItem`, `StockTransfer`, and `StockTransferLineItem` within the Warehouse Management module.
         ```mermaid
-classDiagram
-    class InventoryItem {
-        +UUID id
-        +UUID franchisee_id
-        +UUID product_id
-        +Integer quantity_on_hand
-        +String location
-        +DateTime last_updated
-    }
-    class StockTransfer {
-        +UUID id
-        +UUID from_franchisee_id
-        +UUID to_franchisee_id
-        +UUID initiated_by_user_id
-        +DateTime timestamp
-        +String status
-    }
-    class StockTransferLineItem {
-        +UUID id
-        +UUID stock_transfer_id
-        +UUID product_id
-        +Integer quantity
-    }
+        classDiagram
+            class InventoryItem {
+                +UUID id
+                +UUID franchisee_id
+                +UUID product_id
+                +Integer quantity_on_hand
+                +String location
+                +DateTime last_updated
+            }
+            class StockTransfer {
+                +UUID id
+                +UUID from_franchisee_id
+                +UUID to_franchisee_id
+                +UUID initiated_by_user_id
+                +DateTime timestamp
+                +String status
+            }
+            class StockTransferLineItem {
+                +UUID id
+                +UUID stock_transfer_id
+                +UUID product_id
+                +Integer quantity
+            }
 
-    InventoryItem "1" -- "1" Product : refers to
-    StockTransfer "1" -- "*" StockTransferLineItem : contains
-    StockTransferLineItem "*" -- "1" Product : refers to
-    StockTransfer "1" -- "1" Franchisee : from
-    StockTransfer "1" -- "1" Franchisee : to
+            InventoryItem "1" -- "1" Product : refers to
+            StockTransfer "1" -- "*" StockTransferLineItem : contains
+            StockTransferLineItem "*" -- "1" Product : refers to
+            StockTransfer "1" -- "1" Franchisee : from
+            StockTransfer "1" -- "1" Franchisee : to
+        ```
+    *   **3.3.5 Sequence Diagram (Conceptual: Stock Transfer Request & Processing):**
+        This sequence diagram details the interactions between the Requesting Franchisee's client, the LazyFranchisor Backend, and the Fulfilling Location's client during a stock transfer.
+        ```mermaid
+        sequenceDiagram
+            actor RF as Requesting Franchisee (Client)
+            participant LB as LazyFranchisor Backend
+            actor FL as Fulfilling Location (Client)
+            database DB as PostgreSQL Database
+
+            RF->>LB: POST /api/v1/stock-transfers (Request Transfer)
+            activate LB
+            LB->>DB: Save StockTransfer & LineItems (Status: Pending)
+            activate DB
+            DB-->>LB: Confirmation
+            deactivate DB
+            LB->>FL: Notify Fulfilling Location (e.g., WebSocket/Push)
+            LB-->>RF: 201 Created (Transfer Request ID)
+            deactivate LB
+
+            FL->>LB: GET /api/v1/stock-transfers/{id} (Fetch Transfer Details)
+            activate LB
+            LB->>DB: Retrieve Transfer Details
+            activate DB
+            DB-->>LB: Transfer Details
+            deactivate DB
+            LB-->>FL: 200 OK (Transfer Details)
+            deactivate LB
+
+            FL->>FL: Pick & Pack Items
+            FL->>LB: PUT /api/v1/stock-transfers/{id}/status (Status: Shipped)
+            activate LB
+            LB->>DB: Update StockTransfer Status
+            activate DB
+            DB-->>LB: Confirmation
+            deactivate DB
+            LB->>RF: Notify Requesting Franchisee (e.g., WebSocket/Push)
+            LB-->>FL: 200 OK
+            deactivate LB
+
+            RF->>LB: GET /api/v1/stock-transfers/{id} (Check Status)
+            activate LB
+            LB->>DB: Retrieve Transfer Status
+            activate DB
+            DB-->>LB: Status: Shipped
+            deactivate DB
+            LB-->>RF: 200 OK (Status: Shipped)
+            deactivate LB
+
+            RF->>RF: Receive & Verify Items
+            RF->>LB: PUT /api/v1/stock-transfers/{id}/status (Status: Received)
+            activate LB
+            LB->>DB: Update StockTransfer Status
+            activate DB
+            DB-->>LB: Confirmation
+            deactivate DB
+            LB->>DB: Adjust InventoryItem Quantities (for RF)
+            activate DB
+            DB-->>LB: Confirmation
+            deactivate DB
+            LB-->>RF: 200 OK
+            deactivate LB
         ```
 
 **4. Core Feature: POS (Point of Sale)**
@@ -173,58 +239,86 @@ classDiagram
         *   `InventoryItem` (as above)
         *   `Discount`: `id`, `name`, `description`, `type` (e.g., `percentage`, `fixed_amount`), `value`, `start_date`, `end_date`, `applicable_products` (array of product IDs or categories).
     *   **4.3.3 Flow Diagram (Conceptual: POS Transaction with Discount & Inventory Update):**
+        This flow diagram illustrates the process of a POS transaction, including discount application and the subsequent update to inventory levels.
         ```mermaid
-graph TD
-    A[Cashier at POS] --> B{Process Transaction Request};
-    B --> C{Validate Products & Quantities};
-    C --> D{Apply Discounts/Promotions};
-    D --> E{Calculate Total & Create SalesTransaction};
-    E --> F[Update Inventory (via Warehouse Module)];
-    F --> G[Persist SalesTransaction & SalesLineItems];
-    G --> H[Return Success Response];
-    C -- Invalid --> I[Return Error Response];
-    F -- Inventory Update Failed --> J[Rollback Transaction & Return Error];
+        graph TD
+            A[Cashier at POS] --> B{Process Transaction Request};
+            B --> C{Validate Products & Quantities};
+            C --> D{Apply Discounts/Promotions};
+            D --> E{Calculate Total & Create SalesTransaction};
+            E --> F[Update Inventory (via Warehouse Module)];
+            F --> G[Persist SalesTransaction & SalesLineItems];
+            G --> H[Return Success Response];
+            C -- Invalid --> I[Return Error Response];
+            F -- Inventory Update Failed --> J[Rollback Transaction & Return Error];
         ```
     *   **4.3.4 UML Diagram (Conceptual: Class Diagram for POS Entities):**
+        This class diagram shows the relationships between `SalesTransaction`, `SalesLineItem`, `Product`, `Discount`, and `InventoryItem` within the POS module.
         ```mermaid
-classDiagram
-    class SalesTransaction {
-        +UUID id
-        +Decimal total_amount
-        +Decimal discount_applied
-        ...
-    }
-    class SalesLineItem {
-        +UUID id
-        +Integer quantity
-        +Decimal subtotal
-        ...
-    }
-    class Product {
-        +UUID id
-        +String name
-        +Decimal price
-        ...
-    }
-    class Discount {
-        +UUID id
-        +String name
-        +String type
-        +Decimal value
-        +Date start_date
-        +Date end_date
-        +List~UUID~ applicable_products
-    }
-    class InventoryItem {
-        +UUID id
-        +Integer quantity_on_hand
-        ...
-    }
+        classDiagram
+            class SalesTransaction {
+                +UUID id
+                +Decimal total_amount
+                +Decimal discount_applied
+                ...
+            }
+            class SalesLineItem {
+                +UUID id
+                +Integer quantity
+                +Decimal subtotal
+                ...
+            }
+            class Product {
+                +UUID id
+                +String name
+                +Decimal price
+                ...
+            }
+            class Discount {
+                +UUID id
+                +String name
+                +String type
+                +Decimal value
+                +Date start_date
+                +Date end_date
+                +List~UUID~ applicable_products
+            }
+            class InventoryItem {
+                +UUID id
+                +Integer quantity_on_hand
+                ...
+            }
 
-    SalesTransaction "1" -- "*" SalesLineItem : contains
-    SalesLineItem "*" -- "1" Product : refers to
-    SalesTransaction "1" -- "*" Discount : applies
-    SalesTransaction "1" -- "1" InventoryItem : updates
+            SalesTransaction "1" -- "*" SalesLineItem : contains
+            SalesLineItem "*" -- "1" Product : refers to
+            SalesTransaction "1" -- "*" Discount : applies
+            SalesTransaction "1" -- "1" InventoryItem : updates
+        ```
+    *   **4.3.5 Sequence Diagram (Conceptual: POS Transaction Processing):**
+        This sequence diagram details the interactions during a POS transaction, from the Cashier's client to the LazyFranchisor Backend and the database, including inventory updates.
+        ```mermaid
+        sequenceDiagram
+            actor C as Cashier (POS Client)
+            participant LB as LazyFranchisor Backend
+            database DB as PostgreSQL Database
+
+            C->>LB: POST /api/v1/pos/transactions (Process Sale)
+            activate LB
+            LB->>LB: Validate Request & Apply Discounts
+            LB->>DB: Fetch Product & Inventory Details
+            activate DB
+            DB-->>LB: Product & Inventory Data
+            deactivate DB
+            LB->>DB: Create SalesTransaction & SalesLineItems
+            activate DB
+            DB-->>LB: Confirmation
+            deactivate DB
+            LB->>DB: Update InventoryItem Quantities
+            activate DB
+            DB-->>LB: Confirmation
+            deactivate DB
+            LB-->>C: 201 Created (SalesTransaction ID)
+            deactivate LB
         ```
 
 **5. Cross-Cutting Concerns**
@@ -233,6 +327,42 @@ classDiagram
     *   **Mechanism:** JWT (JSON Web Tokens) for stateless authentication.
     *   **Flow:** User logs in, receives a JWT. This token is then sent with subsequent requests in the `Authorization` header.
     *   **Authorization:** Role-Based Access Control (RBAC) will be implemented, where user roles (Franchisor Admin, Franchisee Owner, Employee) determine access to specific API endpoints and data.
+    *   **5.1.1 Sequence Diagram (Conceptual: User Authentication):**
+        This sequence diagram illustrates the process of a user logging in and obtaining a JWT for subsequent authenticated requests.
+        ```mermaid
+        sequenceDiagram
+            actor U as User (Client)
+            participant LB as LazyFranchisor Backend
+            database DB as PostgreSQL Database
+
+            U->>LB: POST /api/v1/auth/login (Credentials)
+            activate LB
+            LB->>DB: Verify User Credentials
+            activate DB
+            DB-->>LB: User Details (if valid)
+            deactivate DB
+            alt Credentials Valid
+                LB->>LB: Generate JWT
+                LB-->>U: 200 OK (JWT)
+            else Credentials Invalid
+                LB-->>U: 401 Unauthorized
+            end
+            deactivate LB
+
+            U->>LB: GET /api/v1/protected-resource (with JWT in Authorization header)
+            activate LB
+            LB->>LB: Validate JWT & Check User Permissions (RBAC)
+            alt Token Valid & Authorized
+                LB->>DB: Fetch Protected Data
+                activate DB
+                DB-->>LB: Data
+                deactivate DB
+                LB-->>U: 200 OK (Protected Data)
+            else Token Invalid or Unauthorized
+                LB-->>U: 403 Forbidden / 401 Unauthorized
+            end
+            deactivate LB
+        ```
 *   **5.2 Geo-location Support:**
     *   **Storage:** Franchisee locations will be stored as `GEOMETRY(Point, 4326)` data type in PostgreSQL using the PostGIS extension.
     *   **Basic Queries:** Initial MVP will support storing and retrieving location data. Future enhancements will include spatial queries (e.g., finding nearest franchisees, defining delivery zones).
