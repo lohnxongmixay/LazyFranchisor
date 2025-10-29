@@ -14,7 +14,62 @@ The LazyFranchisor documentation suite provides comprehensive coverage of all as
 
 ## 🗂️ Core Documentation
 
-### 1. **Comprehensive Development, Business & Operational Plan**
+### 1. **AI Development Prompts** ⭐ NEW
+**File:** `AI_Development_Prompts.md`
+**Size:** ~100 pages
+**Last Updated:** October 29, 2025
+
+**Contents:**
+- **Backend Development Prompts**
+  - Generic API endpoint creation template
+  - Authentication service implementation
+  - Sales transaction service with business logic
+  - Warehouse transfer system with workflow
+
+- **Frontend Development Prompts**
+  - React dashboard component with real-time updates
+  - POS (Point of Sale) interface with offline support
+  - Responsive design and mobile optimization
+
+- **Database & Migrations Prompts**
+  - Database schema design with constraints
+  - Migration creation with up/down scripts
+  - Data migration and safety checklists
+
+- **Testing & QA Prompts**
+  - Unit tests for backend services (>80% coverage)
+  - Integration tests for API endpoints
+  - End-to-end tests with Playwright/Cypress
+  - Comprehensive QA test plan template
+  - Accessibility (WCAG 2.1) testing
+  - Mobile responsiveness testing
+
+- **Security & Performance Prompts**
+  - Security audit and penetration testing (OWASP Top 10)
+  - Performance optimization (database, API, frontend)
+  - Load testing and benchmarking
+
+- **DevOps & Infrastructure Prompts**
+  - CI/CD pipeline setup with GitHub Actions
+  - Docker and Kubernetes configuration
+  - AWS infrastructure as code (Terraform)
+
+- **Feature-Specific Prompts**
+  - Complete feature implementation from scratch
+  - End-to-end development workflow
+
+**Total Prompts:** 18 comprehensive AI prompts covering all aspects of development
+
+**Use Cases:**
+- Accelerate development with AI assistance
+- Maintain consistent coding standards
+- Generate production-ready code
+- Comprehensive testing strategies
+- DevOps automation
+
+---
+
+### 2. **Comprehensive Development, Business & Operational Plan**
 **File:** `Comprehensive_Development_Business_Operational_Plan.md`
 **Size:** ~200 pages
 **Last Updated:** October 28, 2025
@@ -638,13 +693,15 @@ All documents follow semantic versioning:
 ### Documentation Coverage
 
 ```
-Total Pages: ~650
-Total Words: ~250,000
+Total Documents: 11 (including README)
+Total Pages: ~800
+Total Words: ~300,000
 Total Diagrams: 50+
-Total Code Examples: 20+
+Total Code Examples: 100+ (includes AI prompt examples)
 Total SOPs: 4 detailed + 10 embedded
 Total Workflows: 25+
 Total Checklists: 15+
+Total AI Prompts: 18 comprehensive prompts
 ```
 
 ### Documentation by Category
